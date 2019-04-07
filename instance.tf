@@ -3,7 +3,7 @@ resource "aws_instance" "web" {
   instance_type = "t2.micro"
   key_name = "MyKeyPair"
   tags {
-    Name = "Terraformsingle1"
+    Name = "Terraformsinglejenkins"
   }
 
 }
