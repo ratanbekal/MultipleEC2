@@ -6,3 +6,4 @@ variable "keypair" {
 
 variables "vpc_security_group_id" {
    default = "vpc-503c3c38"
+   }
