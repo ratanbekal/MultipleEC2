@@ -1,6 +1,6 @@
 resource "aws_instance" "web" {
   count = "2"
-  ami = "ami-013e04dfa544cfe54"
+  ami = "ami-0481727d0e48e4da7"
   instance_type = "t2.micro"
   key_name = "${var.keypair}"
   security_groups = ["${var.security_g}"]
