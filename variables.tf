@@ -7,3 +7,7 @@ variable "keypair" {
 variable "vpc_security_group_id" {
    default = "vpc-503c3c38"
    }
+
+variable "subnet_id" {
+   default = "subnet-ccf096b6"
+   }
