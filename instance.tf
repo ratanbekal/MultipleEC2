@@ -4,7 +4,6 @@ resource "aws_instance" "web" {
   instance_type = "t2.micro"
   key_name = "${var.keypair}"
   security_groups = ["${var.security_g}"]
-  vpc_security_group_ids = ["${var.vpc_security_group_id}"]
   subnet_id = "${var.subnet_id}"
   tags {
     Name = "Terraform-${count.index + 1}"
