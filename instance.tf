@@ -8,9 +8,4 @@ resource "aws_instance" "web" {
   tags {
     Name = "Seleniumnode-${count.index + 1}"
   }
-  provisioner "local-exec" {
-    inline = [
-      "c:\node.bat"
-    ]
-      }
 }
