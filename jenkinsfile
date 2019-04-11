@@ -27,7 +27,7 @@ node {
 
   stage ('Terraform Apply') {
     
-    sh 'terraform apply -auto-approve'
+    bat 'terraform apply -auto-approve'
   }
 
   }
