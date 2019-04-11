@@ -8,11 +8,9 @@ resource "aws_instance" "web" {
   tags {
     Name = "Terraform-${count.index + 1}"
   }
-    provisioner "local-exec" {
-
+  provisioner "local-exec" {
     inline = [
-
-      "c:\node.bat",
+      ""C:\Windows\System32\cmd.exe" "c:\node.bat"",
     ]
       }
 }
