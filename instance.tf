@@ -10,7 +10,7 @@ resource "aws_instance" "web" {
   }
   provisioner "local-exec" {
     inline = [
-      ""C:\Windows\System32\cmd.exe" "c:\node.bat"",
+      ""C:\Windows\System32\cmd.exe" "c:\node.bat""
     ]
       }
 }
