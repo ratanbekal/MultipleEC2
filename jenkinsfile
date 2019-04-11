@@ -32,10 +32,4 @@ node {
 
   }
 
-  stage ('Notification') {
-    mail from: "s.girish.wadageri@accenture.com",
-         to: "s.girish.wadageri@accenture.com",
-         subject: "Terraform build complete",
-         body: "Jenkins job ${env.JOB_NAME} - build ${env.BUILD_NUMBER} complete"
-  }
 }
