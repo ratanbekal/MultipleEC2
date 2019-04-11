@@ -21,6 +21,7 @@ node {
   }
 
   stage ('Terraform Plan') {
+    bat 'terraform init'
     bat 'terraform plan'
   }
 
