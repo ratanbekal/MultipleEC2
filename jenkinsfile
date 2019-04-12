@@ -5,7 +5,7 @@
   //string( name: 'AWS_ACCESS_KEY_ID', defaultValue: ''),
   //string( name: 'AWS_SECRET_ACCESS_KEY', defaultValue: '')
 //]), pipelineTriggers([]) ])
-step([$class: 'WsCleanup'])
+
 Environment Variables
 //env.AWS_ACCESS_KEY_ID = AWS_ACCESS_KEY_ID
 //env.AWS_SECRET_ACCESS_KEY = AWS_SECRET_ACCESS_KEY
@@ -13,6 +13,8 @@ env.instance_count = "${instance_count}"
 echo ${env.instance_count}
 
 node {
+  
+  step([$class: 'WsCleanup'])
 /*
   withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'fsig49-povuser', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]){
     
