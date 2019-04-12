@@ -1,22 +1,14 @@
 #!groovy
 
-// Build Parameters
-//properties([ parameters([
-  //string( name: 'AWS_ACCESS_KEY_ID', defaultValue: ''),
-  //string( name: 'AWS_SECRET_ACCESS_KEY', defaultValue: '')
-//]), pipelineTriggers([]) ])
+pipeline{
 
-
+  Environment {
+    instancecount = "${instance_count}"
+  }
 
 node {
   
   step([$class: 'WsCleanup'])
-  
-  Environment Variables
-//env.AWS_ACCESS_KEY_ID = AWS_ACCESS_KEY_ID
-//env.AWS_SECRET_ACCESS_KEY = AWS_SECRET_ACCESS_KEY
-env.instance_count = "${instance_count}"
-echo "${env.instance_count}"
 
   withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'fsig49-povuser', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]){
     
@@ -27,7 +19,7 @@ echo "${env.instance_count}"
   stage ('Terraform Plan') {
     
     bat 'terraform init'
-    bat 'terraform plan -var instance_count="${instance_count}"'
+    bat 'terraform plan -var instance_count="${env.instancecount}"'
   }
 
 
@@ -38,4 +30,5 @@ echo "${env.instance_count}"
 
   }
 
+}
 }
