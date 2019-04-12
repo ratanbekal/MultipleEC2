@@ -14,8 +14,6 @@ env.instance_count = "${instance_count}"
   withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'fsig49-povuser', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]){
     
   stage ('Checkout') {
-      
-      step([$class: 'WsCleanup'])
       git 'https://github.com/shruthiWadageri/MultipleEC2.git'
   }
 
