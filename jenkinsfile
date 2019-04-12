@@ -21,7 +21,7 @@ env.instance_count = "${instance_count}"
     echo "${env.instance_count}"
     
     bat 'terraform init'
-    bat 'terraform plan -var instance_count="${env.instance_count}"'
+    bat 'terraform plan -var instance_count=%env.instance_count%'
   }
 
 
