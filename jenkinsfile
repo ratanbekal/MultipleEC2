@@ -22,7 +22,7 @@ node {
   stage ('Terraform Plan') {
     
     bat 'terraform init'
-    bat 'terraform plan \-var 'instance_count=${env.instance_count}'
+    bat 'terraform plan \ -var 'instance_count=${env.instance_count}'
   }
 
 
