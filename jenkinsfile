@@ -27,7 +27,7 @@ env.instance_count = "${instance_count}"
 
   stage ('Terraform Apply') {
     
-    bat 'terraform apply -auto-approve'
+    bat 'terraform apply  -var instance_count=%instance_count% -var tag_name=%tag_name% -auto-approve'
   }
 
   }
