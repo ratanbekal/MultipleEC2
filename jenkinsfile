@@ -29,12 +29,8 @@ env.instance_count = "${instance_count}"
 
 
   stage ('Terraform Apply') {
-      
-   when {
-    expression {
-        return env.plan == 'apply';
-    }}
-      steps{    
+    
+      if (env.plan == 'apply'){  
     bat 'terraform apply  -var instance_count=%instance_count% -var tag_name=%tag_name% -auto-approve'}
   }
       
