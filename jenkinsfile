@@ -1,9 +1,12 @@
 #!groovy
 
 node {
-    environment {
-    instancecount = "${instance_count}"
-  }
+    
+Environment Variables
+//env.AWS_ACCESS_KEY_ID = AWS_ACCESS_KEY_ID
+//env.AWS_SECRET_ACCESS_KEY = AWS_SECRET_ACCESS_KEY
+env.instance_count = ${instance_count}
+    echo "${env.instance_count}"
   
   step([$class: 'WsCleanup'])
 
@@ -14,9 +17,9 @@ node {
   }
 
   stage ('Terraform Plan') {
-      instancecount = "${instance_count}"
+    
     bat 'terraform init'
-    bat 'terraform plan -var instance_count="${env.instancecount}"'
+    bat 'terraform plan -var instance_count="${env.instance_count}"'
   }
 
 
