@@ -9,7 +9,7 @@
 Environment Variables
 //env.AWS_ACCESS_KEY_ID = AWS_ACCESS_KEY_ID
 //env.AWS_SECRET_ACCESS_KEY = AWS_SECRET_ACCESS_KEY
-env.instance_count = ${instance_count}
+env.instance_count = "${instance_count}"
 echo ${env.instance_count}
 
 node {
