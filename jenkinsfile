@@ -14,10 +14,7 @@ node {
   }
 
   stage ('Terraform Plan') {
-          environment {
-    instancecount = "${instance_count}"
-  }
-    
+      instancecount = "${instance_count}"
     bat 'terraform init'
     bat 'terraform plan -var instance_count="${env.instancecount}"'
   }
