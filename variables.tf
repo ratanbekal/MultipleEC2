@@ -11,3 +11,5 @@ variable "vpc_security_group_id" {
 variable "subnet_id" {
    default = "subnet-ccf096b6"
    }
+
+variable "instance_count" {}
