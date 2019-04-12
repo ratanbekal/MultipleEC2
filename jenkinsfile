@@ -7,16 +7,19 @@ Environment Variables
 //env.AWS_SECRET_ACCESS_KEY = AWS_SECRET_ACCESS_KEY
 env.instance_count = "${instance_count}"
     echo "${env.instance_count}"
+    env.apply = "${apply}"
+    env.destroy = "${destroy}"
   
-  step([$class: 'WsCleanup'])
+  
 
   withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'fsig49-povuser', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]){
     
   stage ('Checkout') {
-    git 'https://github.com/shruthiWadageri/MultipleEC2.git'
+      git 'https://github.com/shruthiWadageri/MultipleEC2.git'
   }
 
   stage ('Terraform Plan') {
+      step([$class: 'WsCleanup'])
       env.instance_count = "${instance_count}"
     echo "${env.instance_count}"
     
@@ -26,8 +29,26 @@ env.instance_count = "${instance_count}"
 
 
   stage ('Terraform Apply') {
+      
+   when {
+    expression {
+        return env.apply == 'apply';
+        }
+      step([$class: 'WsCleanup'])
     
     bat 'terraform apply  -var instance_count=%instance_count% -var tag_name=%tag_name% -auto-approve'
+  }
+      
+   stage ('Terraform destroy') {
+      
+   when {
+    expression {
+        return env.destrory == 'destroy';
+        }
+      step([$class: 'WsCleanup'])
+    
+    bat 'terraform apply  -var instance_count=%instance_count% -var tag_name=%tag_name% -auto-approve'
+    bat 'terraform destroy  -var instance_count=%instance_count% -var tag_name=%tag_name% -auto-approve'
   }
 
   }
