@@ -2,11 +2,10 @@
 
 pipeline{
 
-  Environment {
+node {
+    environment {
     instancecount = "${instance_count}"
   }
-
-node {
   
   step([$class: 'WsCleanup'])
 
