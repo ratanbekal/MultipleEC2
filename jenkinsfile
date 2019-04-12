@@ -34,8 +34,8 @@ env.instance_count = "${instance_count}"
     expression {
         return env.plan == 'apply';
     }}
-    
-    bat 'terraform apply  -var instance_count=%instance_count% -var tag_name=%tag_name% -auto-approve'
+      steps{    
+    bat 'terraform apply  -var instance_count=%instance_count% -var tag_name=%tag_name% -auto-approve'}
   }
       
    stage ('Terraform destroy') {
@@ -44,9 +44,10 @@ env.instance_count = "${instance_count}"
     expression {
         return env.plan == 'destroy';
     }}
-    bat 'terraform plan -var instance_count=%instance_count% -var tag_name=%tag_name%'
+       steps{
+           bat 'terraform plan -var instance_count=%instance_count% -var tag_name=%tag_name%'
     bat 'terraform apply  -var instance_count=%instance_count% -var tag_name=%tag_name% -auto-approve'
-    bat 'terraform destroy  -var instance_count=%instance_count% -var tag_name=%tag_name% -auto-approve'
+    bat 'terraform destroy  -var instance_count=%instance_count% -var tag_name=%tag_name% -auto-approve'}
   }
 
   }
