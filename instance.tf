@@ -1,5 +1,5 @@
 resource "aws_instance" "web" {
-  count = "4"
+  count = "${var.instance_count}"
   ami = "ami-0edbcc3ba422f19d4"
   instance_type = "t2.micro"
   key_name = "${var.keypair}"
