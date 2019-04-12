@@ -6,16 +6,18 @@
   //string( name: 'AWS_SECRET_ACCESS_KEY', defaultValue: '')
 //]), pipelineTriggers([]) ])
 
-Environment Variables
-//env.AWS_ACCESS_KEY_ID = AWS_ACCESS_KEY_ID
-//env.AWS_SECRET_ACCESS_KEY = AWS_SECRET_ACCESS_KEY
-env.instance_count = "${instance_count}"
-echo ${env.instance_count}
+
 
 node {
   
   step([$class: 'WsCleanup'])
-/*
+  
+  Environment Variables
+//env.AWS_ACCESS_KEY_ID = AWS_ACCESS_KEY_ID
+//env.AWS_SECRET_ACCESS_KEY = AWS_SECRET_ACCESS_KEY
+env.instance_count = "${instance_count}"
+echo "${env.instance_count}"
+
   withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'fsig49-povuser', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]){
     
   stage ('Checkout') {
@@ -34,6 +36,6 @@ node {
     bat 'terraform apply -auto-approve'
   }
 
-  }*/
+ 
 
 }
