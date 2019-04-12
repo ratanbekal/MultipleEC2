@@ -7,8 +7,7 @@ Environment Variables
 //env.AWS_SECRET_ACCESS_KEY = AWS_SECRET_ACCESS_KEY
 env.instance_count = "${instance_count}"
     echo "${env.instance_count}"
-    env.apply = "${apply}"
-    env.destroy = "${destroy}"
+    env.plan = "${plan}"
   
   
 
@@ -32,7 +31,7 @@ env.instance_count = "${instance_count}"
       
    when {
     expression {
-        return env.apply == 'apply';
+        return env.plan == 'apply';
         }
       step([$class: 'WsCleanup'])
     
@@ -43,7 +42,7 @@ env.instance_count = "${instance_count}"
       
    when {
     expression {
-        return env.destrory == 'destroy';
+        return env.plan == 'destroy';
         }
       step([$class: 'WsCleanup'])
     
