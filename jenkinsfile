@@ -1,7 +1,5 @@
 #!groovy
 
-pipeline{
-
 node {
     environment {
     instancecount = "${instance_count}"
@@ -29,5 +27,4 @@ node {
 
   }
 
-}
 }
