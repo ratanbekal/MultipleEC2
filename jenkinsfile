@@ -13,7 +13,7 @@ env.instance_count = ${instance_count}
 echo ${env.instance_count}
 
 node {
-
+/*
   withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'fsig49-povuser', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]){
     
   stage ('Checkout') {
@@ -32,6 +32,6 @@ node {
     bat 'terraform apply -auto-approve'
   }
 
-  }
+  }*/
 
 }
