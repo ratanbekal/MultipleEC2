@@ -32,7 +32,7 @@ env.instance_count = "${instance_count}"
    when {
     expression {
         return env.plan == 'apply';
-        }
+    }}
       step([$class: 'WsCleanup'])
     
     bat 'terraform apply  -var instance_count=%instance_count% -var tag_name=%tag_name% -auto-approve'
@@ -43,7 +43,7 @@ env.instance_count = "${instance_count}"
    when {
     expression {
         return env.plan == 'destroy';
-        }
+    }}
       step([$class: 'WsCleanup'])
     
     bat 'terraform apply  -var instance_count=%instance_count% -var tag_name=%tag_name% -auto-approve'
