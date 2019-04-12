@@ -36,12 +36,8 @@ env.instance_count = "${instance_count}"
       
    stage ('Terraform destroy') {
       
-   when {
-    expression {
-        return env.plan == 'destroy';
-    }}
-       steps{
-           bat 'terraform plan -var instance_count=%instance_count% -var tag_name=%tag_name%'
+      if (env.plan == 'destroy'){ 
+ 
     bat 'terraform apply  -var instance_count=%instance_count% -var tag_name=%tag_name% -auto-approve'
     bat 'terraform destroy  -var instance_count=%instance_count% -var tag_name=%tag_name% -auto-approve'}
   }
