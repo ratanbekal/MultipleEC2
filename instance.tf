@@ -6,6 +6,6 @@ resource "aws_instance" "web" {
   security_groups = ["${var.security_g}"]
   subnet_id = "${var.subnet_id}"
   tags {
-    Name = "seleniumhubnodes-${count.index + 1}"
+    Name = ""${var.tag_name}"-${count.index + 1}"
   }
 }
