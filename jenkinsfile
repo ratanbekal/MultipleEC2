@@ -36,6 +36,6 @@ echo "${env.instance_count}"
     bat 'terraform apply -auto-approve'
   }
 
- 
+  }
 
 }
