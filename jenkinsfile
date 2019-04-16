@@ -16,7 +16,7 @@ env.instance_count = "${instance_count}"
    
   stage ('CleanUp') {
       if (env.Wipe_Workspace == 'YES'){ 
-      deletedir()
+      deleteDir()
       }
   }
       
