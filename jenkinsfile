@@ -8,7 +8,7 @@ Environment Variables
 env.instance_count = "${instance_count}"
     echo "${env.instance_count}"
     env.plan = "${plan}"
-    env.Wipe_Workspace = "${Wipe_Workspace}
+    env.Wipe_Workspace = "${Wipe_Workspace}"
   
   
 
