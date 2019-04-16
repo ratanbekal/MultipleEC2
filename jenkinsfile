@@ -8,11 +8,18 @@ Environment Variables
 env.instance_count = "${instance_count}"
     echo "${env.instance_count}"
     env.plan = "${plan}"
+    env.Wipe_Workspace = "${Wipe_Workspace}
   
   
 
   withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'fsig49-povuser', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]){
-    
+   
+  stage ('CleanUp') {
+      if (env.Wipe_Workspace == 'YES'){ 
+      deletedir()
+      }
+  }
+      
   stage ('Checkout') {
       git 'https://github.com/shruthiWadageri/MultipleEC2.git'
   }
