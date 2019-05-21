@@ -32,14 +32,15 @@ withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariab
   stage ('Terraform Apply') {
     
       if (env.plan == 'apply'){  
-      sh 'terraform apply  -var instance_count=%instance_count% -var tag_name=%tag_name% -auto-approve'}
+      sh "terraform apply  -var instance_count=${env.instance_count} -var tag_name=${env.tag_name} -auto-approve'}"
   }
       
    stage ('Terraform destroy') {
       
       if (env.plan == 'destroy'){ 
  
-      sh 'terraform destroy  -var instance_count=%instance_count% -var tag_name=%tag_name% -auto-approve'}
+      sh "terraform destroy  -var instance_count=${env.instance_count} -var tag_name=${env.tag_name} -auto-approve"
+      }
   }
 
   }
