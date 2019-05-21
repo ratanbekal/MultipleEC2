@@ -24,7 +24,11 @@ withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariab
       env.instance_count = "${instance_count}"
       echo "${env.instance_count}"
       instancecount = ${env.instance_count}
+      echo "--------------"
+      echo $instancecount
       tagname = ${env.tag_name}
+      echo $tagname
+     echo "--------------"
       sh 'terraform init'
       sh 'terraform plan -var instance_count=$instancecount -var tag_name=$tagname'
   }
