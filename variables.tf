@@ -1,15 +1,15 @@
 variable "security_g" {
-   default = "sg-0d34d96e5f4e419d9"}
+   default = "sg-0c37c2b0c2eb0a565"}
 
 variable "keypair" {
-   default = "Clientvisit2019"}
+   default = "Green_Berets_KeyPair"}
 
 variable "vpc_security_group_id" {
-   default = "vpc-503c3c38"
+   default = "vpc-e57f118d"
    }
 
 variable "subnet_id" {
-   default = "subnet-ccf096b6"
+   default = "subnet-4e71ed26"
    }
 
 variable "instance_count" {}
