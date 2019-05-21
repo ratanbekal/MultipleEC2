@@ -13,6 +13,7 @@ withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariab
   stage ('CleanUp') {
       if (env.Wipe_Workspace == 'YES'){ 
          deleteDir()
+         cleanWs()
       }
   }
       
