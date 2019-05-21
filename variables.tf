@@ -14,4 +14,6 @@ variable "subnet_id" {
 
 variable "instance_count" {}
 
-variable "tag_name" {}
+variable "tag_name" {
+   default = "web-server-"
+   }
