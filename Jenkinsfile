@@ -23,22 +23,22 @@ withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariab
   stage ('Terraform Plan') {
       env.instance_count = "${instance_count}"
       echo "${env.instance_count}"
-      bat 'terraform init'
-      bat 'terraform plan -var instance_count=%instance_count% -var tag_name=%tag_name%'
+      sh 'terraform init'
+      sh 'terraform plan -var instance_count=%instance_count% -var tag_name=%tag_name%'
   }
 
 
   stage ('Terraform Apply') {
     
       if (env.plan == 'apply'){  
-    bat 'terraform apply  -var instance_count=%instance_count% -var tag_name=%tag_name% -auto-approve'}
+      sh 'terraform apply  -var instance_count=%instance_count% -var tag_name=%tag_name% -auto-approve'}
   }
       
    stage ('Terraform destroy') {
       
       if (env.plan == 'destroy'){ 
  
-    bat 'terraform destroy  -var instance_count=%instance_count% -var tag_name=%tag_name% -auto-approve'}
+      sh 'terraform destroy  -var instance_count=%instance_count% -var tag_name=%tag_name% -auto-approve'}
   }
 
   }
